@@ -1,0 +1,10 @@
+@mixin accessibility-focus() {
+    outline-color: var(--color-highlight);
+    outline-offset: 0.3rem;
+    outline-style: solid;
+    outline-width: 2px;
+
+    &:not(:focus-visible) {
+        outline: none;
+    }
+}
