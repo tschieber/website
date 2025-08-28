@@ -1,5 +1,6 @@
 @import "library/bootstrap";
 
+@import "config/paths";
 @import "config/accessibility/accessibility-focus";
 @import "config/variables";
 
@@ -13,4 +14,5 @@
 @import "component/header";
 @import "component/hero";
 @import "component/list/list-buttons";
+@import "component/loading";
 @import "component/section";
