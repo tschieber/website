@@ -11,7 +11,7 @@ export default function Home() {
                             <path d="M80-680v-80q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v80h-80v-80H160v80zm240 560v-80H160q-33 0-56.5-23.5T80-280v-80h80v80h640v-80h80v80q0 33-23.5 56.5T800-200H640v80zM192-520l104-104-56-56L80-520l160 160 56-56zm576 0L664-416l56 56 160-160-160-160-56 56z"/>
                         </svg>
                         <h1>Hey, I'm Tim</h1>
-                        <p>I'm a web developer with over 15 years of experience. Here is a summary of my skills.</p>
+                        <p>a web developer with 15+ years of experience building fast, user-friendly, and scalable websites.</p>
 
                         <ul className="list-buttons">
                             <li>
@@ -63,15 +63,74 @@ export default function Home() {
 
             <section>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <h2>Skills</h2>
-                        </div>
-
-                        <div className="col-lg-6">
-                            <h2>Certifications</h2>
+                    <div className="row justify-content-center">
+                        <div className="col-md-9">
+                            <p>I specialize in turning ideas into clean, modern, and responsive digital experiences that engage users and deliver results. With deep expertise in front-end technologies, performance optimization, and seamless UI/UX, I help businesses stand out online and achieve their goals.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <hr />
+
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-4">
+                            <h2>Core Technical Skills</h2>
+                            <ul>
+                                <li><strong>HTML/CSS/JavaScript</strong>
+                                    <ul>
+                                        <li>Templating engines (big fan of <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a>)</li>
+                                        <li>Sass</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Modern Frameworks/Libraries</strong>
+                                    <ul>
+                                        <li>React + Next.js</li>
+                                        <li>.NET MVC</li>
+                                        <li>Salesforce Lightning</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Responsive & Accessible Design</strong>
+                                    <ul>
+                                        <li>Bootstrap</li>
+                                        <li>Web Content Accessibility Guidelines (WCAG)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h2>Tooling & Workflow</h2>
+                            <ul>
+                                <li><strong>Version Control</strong> &mdash; Git + GitHub/Azure</li>
+                                <li><strong>Build Tools</strong> &mdash; Webpack</li>
+                                <li><strong>Package Managers</strong> &mdash; npm, Yarn</li>
+                                <li><strong>Testing</strong> &mdash; Level Access, Cypress, Sauce Labs</li>
+                                <li><strong>Design Tools</strong> &mdash; Figma, Sketch, Adobe XD, Photoshop</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h2>Other Notables</h2>
+                            <ul>
+                                <li><strong>Responsive Websites</strong> &mdash; Responsive layouts, browers/device debugging</li>
+                                <li><strong>DevOps</strong> &mdash; Deployment configuration</li>
+                                <li><strong>UI/UX Principles</strong> &mdash; Defining solutions and collaborating with designers</li>
+                                <li><strong>Requirements</strong> &mdash; Working with BSA and QC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr />
+
+            <section>
+                <div className="container">
+                    <h2>Some fun things</h2>
+                    <p>Draw SVG</p>
                 </div>
             </section>
         </main>
