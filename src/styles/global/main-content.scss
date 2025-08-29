@@ -1,5 +1,12 @@
 .main-content {
     font-size: 1.8rem;
-    margin: 3rem 2rem;
-    min-height: calc(100vh - 8rem - 57px - 168px); // Account for header and footer height
+
+    @include media-breakpoint-up(md) {
+        margin: 3rem 2rem;
+        min-height: calc(100vh - 8rem - 57px - 168px); // Account for header and footer height
+    }
+
+    @include media-breakpoint-down(md) {
+        margin: 2rem 0;
+    }
 }

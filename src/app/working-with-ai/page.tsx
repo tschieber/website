@@ -24,13 +24,27 @@ export default function WorkingWithAi() {
         'tree'
     ];
 
-    const chooseRandomImage = (prevImageUrl?: string) => {
-        let randomImage: string;
-        do {
-            randomImage = randomImages[Math.floor(Math.random() * randomImages.length)];
-        } 
-        while (`/image/ai-example/${randomImage}.jpg` === prevImageUrl && randomImages.length > 1);
+    // Randomize order
+    function shuffleArray<T>(array: T[]): T[] {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
 
+    const shuffledImages = React.useMemo(() => shuffleArray(randomImages), []);
+    const [currentImage, setCurrentImage] = useState<number>(0);
+
+    const chooseRandomImage = () => {
+        let nextIndex = currentImage + 1;
+        if (nextIndex >= shuffledImages.length) {
+            nextIndex = 0;
+        }
+        setCurrentImage(nextIndex);
+
+        const randomImage = shuffledImages[nextIndex];
         return `/image/ai-example/${randomImage}.jpg`;
     };
 
@@ -49,17 +63,19 @@ export default function WorkingWithAi() {
     const handleNewImageClick = () => {
         setImageLoaded(false);
         setIsButtonDisabled(true);
-        setpredictionLoaded(false);
+        setPredictionLoaded(false);
         setImageUrl(chooseRandomImage(imageUrl));
     };
 
     // Model data
-    const [predictionLoaded, setpredictionLoaded] = useState(false);
+    const [predictionLoading, setPredictionLoading] = useState(false);
+    const [predictionLoaded, setPredictionLoaded] = useState(false);
     const [prediction, setPrediction] = useState<string | null>(null);
     const [probability, setProbability] = useState<string | null>(null);
 
     const handleAnalyzeImageClick = () => {
         (async () => {
+            setPredictionLoading(true);
             const image = document.querySelector('[data-random-image]');
 
             // Load the model
@@ -69,7 +85,10 @@ export default function WorkingWithAi() {
             const predictions = await model.classify(image);
             setPrediction(predictions[0].className);
             setProbability((predictions[0].probability * 100).toFixed(2));
-            setpredictionLoaded(true);
+            
+            // Show results
+            setPredictionLoading(false);
+            setPredictionLoaded(true);
         })();
     };
 
@@ -92,7 +111,7 @@ export default function WorkingWithAi() {
                 <div className="container">
                     <h2>Image idenfication</h2>
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-7">
                             {imageUrl && (
                                 <>
                                     <div className={imageLoaded ? '' : 'loading'}>
@@ -111,7 +130,7 @@ export default function WorkingWithAi() {
                             )}
                         </div>
 
-                        <div className="col-md-4">
+                        <div className="col-md-5">
                             <ul className="list-buttons">
                                 <li>
                                     <button
@@ -139,7 +158,18 @@ export default function WorkingWithAi() {
                                 </li>
                             </ul>
 
-                            {predictionLoaded && (
+                            {predictionLoading && (
+                                <>
+                                    <Image
+                                        src="image/loading.svg"
+                                        alt=""
+                                        width={150}
+                                        height={150}
+                                        className="px-5 py-3 img-fluid"
+                                    />
+                                </>
+                            )}
+                            {!predictionLoading && predictionLoaded && (
                                 <>
                                     <p><strong>Prediction:</strong> <br />{prediction}</p>
                                     <p><strong>Probability:</strong> <br />{probability}%</p>
