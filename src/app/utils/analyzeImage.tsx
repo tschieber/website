@@ -1,5 +1,5 @@
+import '@tensorflow/tfjs-backend-cpu';
 import '@tensorflow/tfjs-backend-webgl';
-import * as tf from '@tensorflow/tfjs';
 import * as mobilenet from '@tensorflow-models/mobilenet';
 
 export async function loadModel() {
@@ -10,11 +10,4 @@ export async function loadModel() {
         console.error('Error loading the model:', error);
         throw error;     
     }
-}
-
-export function analyzeImage(image: HTMLImageElement | ImageData) {
-    const tensor = tf.browser.fromPixels(image);
-    const resized = tf.image.resizeNearestNeighbor(tensor, [224, 224]);
-    const normalized = resized.toFloat().div(127.5).sub(1).expandDims();
-    return normalized; 
 }

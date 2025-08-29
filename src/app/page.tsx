@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
     return (
         <main className="main-content">
@@ -130,7 +132,9 @@ export default function Home() {
             <section>
                 <div className="container">
                     <h2>Some fun things</h2>
-                    <p>Draw SVG</p>
+                    <p>
+                        <Link href="/working-with-ai">Working with AI</Link>
+                    </p>
                 </div>
             </section>
         </main>

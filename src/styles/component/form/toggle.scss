@@ -1,0 +1,47 @@
+.toggle {
+    @include accessibility-focus();
+    display: inline-block;
+    height: 2.6rem;
+    position: relative;
+    width: 4.5rem;
+
+    input {
+        height: 0;
+        opacity: 0;
+        width: 0;
+    }
+
+    &__switch {
+        background-color: var(--color-highlight);
+        border: 0.2rem solid var(--color-primary-text);
+        border-radius: 3rem;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+
+        &:before {
+            background-color: var(--color-primary-background-light);
+            border-radius: 50%;
+            bottom: 0.15rem;
+            content: "";
+            height: 2rem;
+            left: 0.3rem;
+            position: absolute;
+            transition: .4s;
+            width: 2rem;
+        }
+    }
+
+    // States
+    input:checked + .toggle__switch:before {
+        transform: translateX(1.5rem);
+    }
+
+    input:not(:focus-visible) + .toggle__switch {
+        border-color: var(--color-highlight);
+    }
+}

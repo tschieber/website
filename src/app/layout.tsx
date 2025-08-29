@@ -6,7 +6,7 @@ import Header from "./component/header";
 import Footer from "./component/footer";
 
 // Styles
-import "./styles/main.scss";
+import "../styles/main.scss";
 
 const saira = Saira({
     variable: "--font-saira",

@@ -1,0 +1,22 @@
+:root {
+    --font-primary: 'Saira', sans-serif;
+    --font-secondary: 'Saira Condensed', sans-serif;
+}
+
+[data-theme="dark"] {
+    --color-primary-background: #0a141f;
+    --color-primary-background-tinted: #0f1d2c;
+    --color-primary-background-light: #1B263B;
+    --color-primary-text: #fff;
+    --color-secondary-text: #fff;
+    --color-highlight: #415A77;
+}
+
+[data-theme="light"] {
+    --color-primary-background: #fff;
+    --color-primary-background-tinted: #ddf5ff;
+    --color-primary-background-light: #D9D9D9;
+    --color-primary-text: #284B63;
+    --color-secondary-text: #353535;
+    --color-highlight: #3C6E71;
+}
