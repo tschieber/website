@@ -1,9 +1,6 @@
 .header {
-    align-items: center;
     background-color: var(--color-primary-background);
-    border-bottom: 2px solid var(--color-primary-background-light);;
-    display: flex;
-    justify-content: space-between;
+    border-bottom: 2px solid var(--color-primary-background-light);
 
     @include media-breakpoint-up(md) {
         padding: 1rem 2rem 0.5rem;
@@ -11,6 +8,11 @@
 
     @include media-breakpoint-down(md) {
         padding: 1rem 0.75rem 0.5rem;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
     }
 
     &__logo {
@@ -34,18 +36,23 @@
     }
 
     &__controls {
-        display: inline-flex;
-        font-size: 1.6rem;
-        line-height: 1;
+        display: flex;
 
-        @include media-breakpoint-up(md) {
-            align-items: center;
-        }
+        &-item {
+            display: inline-flex;
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-left: 2rem;
 
-        @include media-breakpoint-down(md) {
-            align-items: flex-end;
-            flex-direction: column;
-            font-size: 1.2rem;
+            @include media-breakpoint-up(md) {
+                align-items: center;
+            }
+
+            @include media-breakpoint-down(md) {
+                align-items: flex-end;
+                flex-direction: column;
+                font-size: 1.2rem;
+            }
         }
 
         p {

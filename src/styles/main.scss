@@ -8,8 +8,12 @@
 @import "global/theme";
 @import "global/typography";
 
+@import "component/alert";
 @import "component/button/button-solid";
 @import "component/footer";
+@import "component/form/form-control";
+@import "component/form/form-error";
+@import "component/form/form-group";
 @import "component/form/toggle";
 @import "component/header";
 @import "component/hero";

@@ -30,7 +30,10 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const themeCookie = (await cookies()).get('theme')?.value;
+    let themeCookie = (await cookies()).get('theme')?.value;
+    if (!themeCookie) {
+        themeCookie = 'dark';
+    }
 
     return (
         <html lang="en">

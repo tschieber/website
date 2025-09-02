@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { loadModel } from "@/app/utils/analyzeImage";
@@ -109,7 +110,7 @@ export default function WorkingWithAi() {
 
             <section>
                 <div className="container">
-                    <h2>Image idenfication</h2>
+                    <h2>Image identification</h2>
                     <div className="row">
                         <div className="col-md-7">
                             {imageUrl && (
