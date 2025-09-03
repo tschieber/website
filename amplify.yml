@@ -1,9 +1,5 @@
 version: 1
 frontend:
-  env:
-    EMAIL_PASSWORD: ${env.EMAIL_PASSWORD}
-    EMAIL_RECIPIENT: ${env.EMAIL_RECIPIENT}
-    EMAIL_USER: ${env.EMAIL_USER}
   phases:
     preBuild:
       commands:
@@ -12,14 +8,16 @@ frontend:
         - npm ci
     build:
       commands:
+        - echo "EMAIL_PASSWORD=${EMAIL_PASSWORD}" >> .env.production
+        - echo "EMAIL_RECIPIENT=${EMAIL_RECIPIENT}" >> .env.production
+        - echo "EMAIL_USER=${EMAIL_USER}" >> .env.production
         - npm run build
-    start:
-      commands:
-        - npm run start
   artifacts:
     baseDirectory: .next
     files:
       - '**/*'
+    discard-paths: no
   cache:
     paths:
       - node_modules/**/*
+      - '.next/cache/**/*
