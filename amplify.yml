@@ -8,9 +8,9 @@ frontend:
         - npm ci
     build:
       commands:
-        - echo "EMAIL_USER=${EMAIL_USER}" >> .env.production
-        - echo "EMAIL_PASSWORD=${EMAIL_PASSWORD}" >> .env.production
-        - echo "EMAIL_RECIPIENT=${EMAIL_RECIPIENT}" >> .env.production
+        - echo "EMAIL_USER=$EMAIL_USER" >> .env.production
+        - echo "EMAIL_PASSWORD=$EMAIL_PASSWORD" >> .env.production
+        - echo "EMAIL_RECIPIENT=$EMAIL_RECIPIENT" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
