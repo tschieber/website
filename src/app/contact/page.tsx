@@ -16,15 +16,33 @@ export default function Contact() {
     });
 
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [formSubmittedSuccess, setFormSubmittedSuccess] = useState(false);
 
     const onSubmit = async (data: ContactFormData) => {
-        await fetch('/api/send-message', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        });
+        try {
+            const response = await fetch('/api/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
 
-        setFormSubmitted(true);
-        reset();
+            if (!response.ok) {
+                throw new Error(`Error sending message: ${response.statusText}`);
+            }
+            else {
+                setFormSubmittedSuccess(true);
+                reset();
+            }
+
+            // Show alert with success/failure
+            setFormSubmitted(true);
+        } catch (error) {
+            console.error(error);
+            setFormSubmittedSuccess(false);
+            setFormSubmitted(true);
+        }
     };
 
     return (
@@ -34,9 +52,11 @@ export default function Contact() {
                     <h1>Send me a message</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {formSubmitted && (
-                            <>
+                            formSubmittedSuccess ? (
                                 <div className="alert" role="alert">Your message has been sent.</div>
-                            </>
+                            ) : (
+                                <div className="alert alert--error" role="alert">Failed to send message. Please try again.</div>
+                            )
                         )}
 
                         <div className="row">

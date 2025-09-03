@@ -1,4 +1,10 @@
 .alert {
     background-color: var(--color-primary-background-light);
     border: 1px solid var(--color-highlight);
+
+    &--error {
+        background-color: var(--color-primary-background-light);
+        border-color: var(--color-error);
+        color: var(--color-error);
+    }
 }
