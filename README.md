@@ -24,12 +24,12 @@ This site is built in Next.js and deploys to AWS.
 
 ## Technical Details
 
-### Dependencies Added
-@hookform/resolvers
-zod
-nodemailer
-@tensorflow/tfjs
-@tensorflow-models/mobilenet
+### Dependencies
+- @hookform/resolvers
+- zod
+- nodemailer
+- @tensorflow/tfjs
+- @tensorflow-models/mobilenet
 
 ### Testing Notes
 - Contact form validates inputs before submission
