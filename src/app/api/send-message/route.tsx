@@ -11,10 +11,10 @@ const messageSchema = z.object({
 
 // Configure email transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail',  // or your email service
+    service: 'gmail', 
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
+        user: process.env.NEXT_PUBLIC_EMAIL_USER,
+        pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD
     }
 });
 
@@ -28,8 +28,8 @@ export async function POST(request: Request) {
 
         // Send email
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_RECIPIENT,  // Where you want to receive messages
+            from: process.env.NEXT_PUBLIC_EMAIL_USER,
+            to: process.env.NEXT_PUBLIC_EMAIL_RECIPIENT,
             subject: `New Contact Form Message from Website`,
             text: `
                 Name: ${validatedData.name}
