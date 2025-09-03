@@ -2,28 +2,27 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { loadModel } from "@/app/utils/analyzeImage";
+import { loadModel } from '@/app/utils/analyzeImage';
+
+// Available random images
+const randomImages = [
+    'apple',
+    'banana',
+    'bottle',
+    'bug',
+    'car',
+    'cat',
+    'chair',
+    'coffee',
+    'dog',
+    'house',
+    'train',
+    'tree'
+];
 
 export default function WorkingWithAi() {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [imageLoaded, setImageLoaded] = useState(false);
-    const [imageUrl, setImageUrl] = useState<string>('');
-
-    // Available random images
-    const randomImages = [
-        'apple',
-        'banana',
-        'bottle',
-        'bug',
-        'car',
-        'cat',
-        'chair',
-        'coffee',
-        'dog',
-        'house',
-        'train',
-        'tree'
-    ];
 
     // Randomize order
     function shuffleArray<T>(array: T[]): T[] {
@@ -35,10 +34,23 @@ export default function WorkingWithAi() {
         return arr;
     }
 
-    const shuffledImages = React.useMemo(() => shuffleArray(randomImages), []);
+    // Initialize shuffledImages
+    const [shuffledImages, setShuffledImages] = useState<string[]>([]);
+
+    // Set initial image URL with first image
+    const [imageUrl, setImageUrl] = useState('/image/ai-example/apple.jpg');
     const [currentImage, setCurrentImage] = useState<number>(0);
 
-    const chooseRandomImage = () => {
+    useEffect(() => {
+        const shuffled = shuffleArray(randomImages);
+        setShuffledImages(shuffled);
+    }, []);
+
+    const chooseRandomImage = React.useCallback(() => {
+        if (shuffledImages.length === 0) {
+            return imageUrl;
+        }
+        
         let nextIndex = currentImage + 1;
         if (nextIndex >= shuffledImages.length) {
             nextIndex = 0;
@@ -47,12 +59,7 @@ export default function WorkingWithAi() {
 
         const randomImage = shuffledImages[nextIndex];
         return `/image/ai-example/${randomImage}.jpg`;
-    };
-
-    // Set image on load
-    useEffect(() => {
-        setImageUrl(chooseRandomImage());
-    }, []);
+    }, [currentImage, shuffledImages, imageUrl]);
 
     // Enable buttons after image has loaded
     const handleImageLoadComplete = () => {
@@ -65,7 +72,7 @@ export default function WorkingWithAi() {
         setImageLoaded(false);
         setIsButtonDisabled(true);
         setPredictionLoaded(false);
-        setImageUrl(chooseRandomImage(imageUrl));
+        setImageUrl(chooseRandomImage());
     };
 
     // Model data
@@ -79,17 +86,29 @@ export default function WorkingWithAi() {
             setPredictionLoading(true);
             const image = document.querySelector('[data-random-image]');
 
-            // Load the model
-            const model = await loadModel();
+            // Check if image exists
+            if (!(image instanceof HTMLImageElement)) {
+                console.error('Image element not found or invalid');
+                setPredictionLoading(false);
+                return;
+            }
 
-            // Classify the image
-            const predictions = await model.classify(image);
-            setPrediction(predictions[0].className);
-            setProbability((predictions[0].probability * 100).toFixed(2));
-            
-            // Show results
-            setPredictionLoading(false);
-            setPredictionLoaded(true);
+            try {
+                // Load the model
+                const model = await loadModel();
+
+                // Classify the image
+                const predictions = await model.classify(image);
+                setPrediction(predictions[0].className);
+                setProbability((predictions[0].probability * 100).toFixed(2));
+                
+                // Show results
+                setPredictionLoading(false);
+                setPredictionLoaded(true);
+            } catch (error) {
+                console.error('Error analyzing image:', error);
+                setPredictionLoading(false);
+            }
         })();
     };
 
@@ -98,7 +117,7 @@ export default function WorkingWithAi() {
             <section>
                 <div className="container">
                     <h1>Working with AI</h1>
-                    <p>Here is an example of using a machine learning model in the browser. It has been integrated into the codebase but runs soley on the user's hardware.</p>
+                    <p>Here is an example of using a machine learning model in the browser. It has been integrated into the codebase but runs soley on the user&apos;s hardware.</p>
 
                     <ul>
                         <li><a href="https://www.tensorflow.org/js/" target="_blank">TensorFlow</a></li>

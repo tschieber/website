@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, ContactFormData } from './schema';
-import Form from 'next/form';
 
 export default function Contact() {
     const {
@@ -33,7 +32,7 @@ export default function Contact() {
             <section>
                 <div className="container">
                     <h1>Send me a message</h1>
-                    <Form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         {formSubmitted && (
                             <>
                                 <div className="alert" role="alert">Your message has been sent.</div>
@@ -69,7 +68,7 @@ export default function Contact() {
                             <textarea
                                 className="form-control"
                                 id="message"
-                                rows="10"
+                                rows={10}
                                 {...register("message")} />
                             {errors.message && <span className="form-error">{errors.message.message}</span>}
                         </div>
@@ -87,7 +86,7 @@ export default function Contact() {
                                 <path d="M120-160v-640l760 320zm80-120 474-200-474-200v140l240 60-240 60zm0 0v-400z"/>
                             </svg>
                         </button>
-                    </Form>
+                    </form>
                 </div>
             </section>
         </main>
