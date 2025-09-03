@@ -1,0 +1,66 @@
+.header {
+    background-color: var(--color-primary-background);
+    border-bottom: 2px solid var(--color-primary-background-light);
+
+    @include media-breakpoint-up(md) {
+        padding: 1rem 2rem 0.5rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: 1rem 0.75rem 0.5rem;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        @include accessibility-focus();
+        align-items: center;
+        display: flex;
+        text-decoration: none;
+
+        &-asset {
+            height: 40px;
+            fill: var(--color-primary-text);
+            margin-right: 0.75rem;
+            width: 40px;
+        }
+
+        &-text {
+            color: var(--color-primary-text);
+            font-family: var(--font-secondary);
+            font-size: 2.4rem;
+        }
+    }
+
+    &__controls {
+        display: flex;
+
+        &-item {
+            display: inline-flex;
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-left: 2rem;
+
+            @include media-breakpoint-up(md) {
+                align-items: center;
+            }
+
+            @include media-breakpoint-down(md) {
+                align-items: flex-end;
+                flex-direction: column;
+                font-size: 1.2rem;
+            }
+        }
+
+        p {
+            margin: 0 1rem 0 0;
+
+            @include media-breakpoint-down(md) {
+                margin: 0 0 0.5rem;
+            }
+        }
+    }
+}
