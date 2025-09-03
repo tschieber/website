@@ -1,0 +1,23 @@
+version: 1
+frontend:
+  env:
+    EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+    EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+    EMAIL_USER: ${{ secrets.EMAIL_USER }}
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+    start:
+      commands:
+        - npm run start
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
