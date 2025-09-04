@@ -8,6 +8,8 @@ frontend:
         - npm ci
     build:
       commands:
+        - echo $secrets
+        - echo "EMAIL_SENDER=${secrets.EMAIL_SENDER}" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next

@@ -19,12 +19,6 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function POST(request: Request) {
-    console.log('Build environment:', {
-        NODE_ENV: process.env.NODE_ENV,
-        EMAIL_SENDER: process.env.EMAIL_SENDER,
-        EMAIL_RECIPIENT: process.env.EMAIL_RECIPIENT
-    });
-
     try {
         // Parse the request body
         const body = await request.json();
