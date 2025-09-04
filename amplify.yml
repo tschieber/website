@@ -3,26 +3,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "Fetching secrets from SSM..."
-        - |
-          for secret in $(aws ssm get-parameters-by-path \
-            --path /amplify/shared/dcq7q56jlqlsy/ \
-            --with-decryption \
-            --region us-east-2 \
-            --query "Parameters[*].{Name:Name}" \
-            --output text); do
-
-              key=$(basename "$secret")
-              value=$(aws ssm get-parameter \
-                --name "$secret" \
-                --with-decryption \
-                --region us-east-2 \
-                --query "Parameter.Value" \
-                --output text)
-
-              echo "$key=$value" >> .env
-              export "$key=$value"
-          done
         - nvm install 22
         - nvm use 22
         - npm ci
