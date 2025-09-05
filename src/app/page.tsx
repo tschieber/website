@@ -13,7 +13,7 @@ export default function Home() {
                             <path d="M80-680v-80q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v80h-80v-80H160v80zm240 560v-80H160q-33 0-56.5-23.5T80-280v-80h80v80h640v-80h80v80q0 33-23.5 56.5T800-200H640v80zM192-520l104-104-56-56L80-520l160 160 56-56zm576 0L664-416l56 56 160-160-160-160-56 56z"/>
                         </svg>
                         <h1>Hey, I&apos;m Tim</h1>
-                        <p>a web developer with 15+ years of experience building fast, user-friendly, and scalable websites.</p>
+                        <p>a web developer with a strong background in building high-performance, modern, and responsive web applications.</p>
 
                         <ul className="list-buttons">
                             <li>
