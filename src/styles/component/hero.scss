@@ -1,0 +1,13 @@
+.hero {
+    background-color: var(--color-primary-background-tinted);
+    border: 1px solid var(--color-primary-background-light);
+    border-radius: 2rem;
+    padding: 3rem 5rem;
+
+    &__asset {
+        fill: var(--color-primary-text);
+        height: 150px;
+        margin: 0 0 2rem;
+        width: 150px;
+    }
+}
