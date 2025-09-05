@@ -116,13 +116,16 @@ export default function WorkingWithAi() {
         <main className="main-content">
             <section>
                 <div className="container">
-                    <h1>Working with AI</h1>
-                    <p>Here is an example of using a machine learning model in the browser. It has been integrated into the codebase but runs soley on the user&apos;s hardware.</p>
+                    <h1>AI-Powered Image Recognition Demo</h1>
+                    <p>This interactive demo showcases real-time machine learning capabilities running entirely in your browser. Using <a href="https://www.tensorflow.org/js/" target="_blank">TensorFlow.js</a>, it demonstrates how AI can be seamlessly integrated into web applications without requiring server-side processing.</p>
 
+                    <h2>Key Features</h2>
                     <ul>
-                        <li><a href="https://www.tensorflow.org/js/" target="_blank">TensorFlow</a></li>
-                        <li>Runs entirely with JavaScript</li>
-                        <li>Using an already trained model</li>
+                        <li><strong>Instant Image Recognition:</strong> Analyzes images in real-time</li>
+                        <li><strong>Client-Side Processing:</strong> All computations run locally in your browser</li>
+                        <li><strong>Dynamic Image Selection:</strong> Choose from a curated set of test images</li>
+                        <li><strong>Confidence Scoring:</strong> See how confident the AI is in its predictions</li>
+                        <li><strong>Privacy:</strong> All data is processed locally</li>
                     </ul>
                 </div>
             </section>
