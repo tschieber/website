@@ -53,7 +53,7 @@ function Header() {
                     </div>
 
                     <div className="header__controls-item">
-                        <p>Color theme:</p>
+                        <p className="d-none d-md-block">Color theme:</p>
                         <label
                             className="toggle"
                             aria-label="Toggle color theme">
