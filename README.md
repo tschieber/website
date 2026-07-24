@@ -10,13 +10,6 @@ This site is built in Next.js and deploys to AWS.
 - Created API route for handling form submissions
 - Added success/error handling and loading states
 
-### AI Image Analysis
-- Implemented TensorFlow.js integration for client-side image analysis
-- Added random image selection with no-repeat functionality
-- Created image loading and analysis states
-- Implemented prediction display with confidence scores
-- Added error handling for model loading and image analysis
-
 ### Infrastructure
 - Amplify configuration for deployment
 - Configured environment variables and secrets
@@ -28,15 +21,11 @@ This site is built in Next.js and deploys to AWS.
 - @hookform/resolvers
 - zod
 - nodemailer
-- @tensorflow/tfjs
-- @tensorflow-models/mobilenet
 
 ### Testing Notes
 - Contact form validates inputs before submission
 - Email sending works with configured SMTP settings
-- Random image selection prevents consecutive duplicates
 
 ### Security Considerations
 - Email credentials stored as environment secrets
 - Form inputs sanitized and validated
-- Client-side AI processing prevents data exposure
