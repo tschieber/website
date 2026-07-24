@@ -21,8 +21,8 @@ const sairaCondensed = Saira_Condensed({
 });
 
 export const metadata: Metadata = {
-    title: "Tim Schieber | Developer",
-    description: "Tim Schieber is a web developer with a strong background in building high-performance, modern, and responsive web applications.",
+    title: "Tim Schieber | Senior Software Developer",
+    description: "Tim Schieber is a Senior Software Developer leading global websites and leveraging AI-assisted development to deliver high-performance, accessible, and scalable web applications.",
 };
 
 export default async function RootLayout({

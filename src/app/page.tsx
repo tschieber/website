@@ -1,9 +1,35 @@
 import Link from 'next/link';
 
+const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Tim Schieber',
+    jobTitle: 'Senior Software Developer',
+    description: 'Senior Software Developer with 18 years of experience delivering high-performance, accessible, and scalable web applications.',
+    url: 'https://www.timschieber.dev/',
+    sameAs: [
+        'https://www.linkedin.com/in/timschieber/',
+    ],
+    knowsAbout: [
+        'JavaScript',
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Salesforce Lightning',
+        '.NET MVC',
+        'Web Accessibility (WCAG)',
+        'Core Web Vitals',
+    ],
+};
+
 export default function Home() {
     return (
         <main className="main-content">
-            <section>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+            />
+            <section data-section="intro">
                 <div className="container">
                     <div className="hero">
                         <svg
@@ -13,7 +39,7 @@ export default function Home() {
                             <path d="M80-680v-80q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v80h-80v-80H160v80zm240 560v-80H160q-33 0-56.5-23.5T80-280v-80h80v80h640v-80h80v80q0 33-23.5 56.5T800-200H640v80zM192-520l104-104-56-56L80-520l160 160 56-56zm576 0L664-416l56 56 160-160-160-160-56 56z"/>
                         </svg>
                         <h1>Hey, I&apos;m Tim</h1>
-                        <p>a web developer with a strong background in building high-performance, modern, and responsive web applications.</p>
+                        <p>a Senior Software Developer with over 15 years of experience delivering high-performance, accessible, and scalable web applications.</p>
 
                         <ul className="list-buttons">
                             <li>
@@ -51,11 +77,11 @@ export default function Home() {
                 </div>
             </section>
 
-            <section>
+            <section data-section="about">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-9">
-                            <p>I specialize in turning ideas into clean, modern, and responsive digital experiences that engage users and deliver results. With deep expertise in front-end technologies, performance optimization, and seamless UI/UX, I help businesses stand out online and achieve their goals.</p>
+                            <p>I love turning ideas into clean, modern, responsive experiences that people actually enjoy using. Over my career, I&apos;ve led development on multi-language global websites serving Ireland, the United Kingdom, France, Germany, Spain, and Japan, taking projects from the first line of code through launch and support with teams of 2&ndash;4 developers. I pair solid front-end fundamentals with AI-assisted workflows to build faster without cutting corners on quality, and I&apos;m always looking for ways to make the end product a little better and the process a little smoother.</p>
                         </div>
                     </div>
                 </div>
@@ -63,55 +89,63 @@ export default function Home() {
 
             <hr />
 
-            <section>
+            <section data-section="skills">
                 <div className="container">
+                    <h2>Technical Skills</h2>
                     <div className="row">
                         <div className="col-lg-4">
-                            <h2>Core Technical Skills</h2>
+                            <h3>Front-End Technologies</h3>
                             <ul>
-                                <li><strong>HTML/CSS/JavaScript</strong>
-                                    <ul>
-                                        <li>Component architecture</li>
-                                        <li>Templating engines (big fan of <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a>)</li>
-                                        <li>Sass</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Modern Frameworks/Libraries</strong>
-                                    <ul>
-                                        <li>React + Next.js</li>
-                                        <li>.NET MVC</li>
-                                        <li>Salesforce Lightning</li>
-                                        <li>11ty</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Responsive & Accessible Design</strong>
-                                    <ul>
-                                        <li>Bootstrap</li>
-                                        <li>Web Content Accessibility Guidelines (WCAG)</li>
-                                    </ul>
-                                </li>
+                                <li>HTML5</li>
+                                <li>CSS3, SCSS/Sass</li>
+                                <li>JavaScript (ES6+)</li>
+                                <li>TypeScript</li>
+                                <li>Responsive web design</li>
                             </ul>
                         </div>
 
                         <div className="col-lg-4">
-                            <h2>Tooling & Workflow</h2>
+                            <h3>Frameworks & Platforms</h3>
                             <ul>
-                                <li><strong>Version Control</strong> &mdash; Git + GitHub/Azure</li>
-                                <li><strong>Build Tools</strong> &mdash; Webpack</li>
-                                <li><strong>Package Managers</strong> &mdash; npm, Yarn</li>
-                                <li><strong>Testing</strong> &mdash; Level Access, Cypress, Sauce Labs</li>
-                                <li><strong>Design Tools</strong> &mdash; Figma, Sketch, Adobe XD, Photoshop</li>
+                                <li>React + Next.js</li>
+                                <li>Salesforce Lightning</li>
+                                <li>.NET MVC</li>
+                                <li>Bootstrap</li>
                             </ul>
                         </div>
 
                         <div className="col-lg-4">
-                            <h2>Other Notables</h2>
+                            <h3>Tooling & DevOps</h3>
                             <ul>
-                                <li><strong>Responsive Websites</strong> &mdash; Responsive layouts, browser/device debugging</li>
-                                <li><strong>DevOps</strong> &mdash; Deployment configuration</li>
-                                <li><strong>UI/UX Principles</strong> &mdash; Defining solutions and collaborating with designers</li>
-                                <li><strong>Design Systems/Libraries</strong></li>
-                                <li><strong>Requirements</strong> &mdash; Working with BSA and QC</li>
+                                <li>Git, GitHub, Azure DevOps</li>
+                                <li>CI/CD pipelines</li>
+                                <li>Webpack, npm</li>
+                                <li>GitHub Copilot &amp; AI-assisted development</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h3>Testing & Quality</h3>
+                            <ul>
+                                <li>Unit testing, Cypress</li>
+                                <li>Web accessibility (WCAG)</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h3>Performance & Architecture</h3>
+                            <ul>
+                                <li>Core Web Vitals optimization</li>
+                                <li>Design systems</li>
+                                <li>JSON / API data handling</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h3>Design & Collaboration</h3>
+                            <ul>
+                                <li>Figma, Sketch</li>
+                                <li>Adobe XD, Adobe Photoshop</li>
                             </ul>
                         </div>
                     </div>
@@ -120,12 +154,36 @@ export default function Home() {
 
             <hr />
 
-            <section>
+            <section data-section="highlights">
                 <div className="container">
-                    <h2>Some fun things</h2>
-                    <p>
-                        <Link href="/working-with-ai">Working with AI</Link>
-                    </p>
+                    <h2>Highlights</h2>
+                    <div className="row">
+                        <div className="col-lg-4">
+                            <h3>Leadership & Delivery</h3>
+                            <ul>
+                                <li>18 years of professional software development experience</li>
+                                <li>Lead developer on multi-language global websites spanning Ireland, the UK, France, Germany, Spain, and Japan, from concept through deployment and support</li>
+                                <li>Directed digital project delivery across creative, UX, and development teams</li>
+                                <li>Led teams of 2&ndash;4 developers across project lifecycles, estimation, and technical documentation</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h3>AI-Assisted Development</h3>
+                            <ul>
+                                <li>Integrated GitHub Copilot into daily workflows to accelerate feature delivery and improve development efficiency</li>
+                                <li>Leveraged AI-assisted development to improve code quality and consistency across projects</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-lg-4">
+                            <h3>Client & Business Impact</h3>
+                            <ul>
+                                <li>Served as lead Salesforce Lightning resource, contributing to winning additional client business</li>
+                                <li>Partnered with cross-functional teams &mdash; BSAs, QC, and design &mdash; to ensure scalable, maintainable solutions</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
